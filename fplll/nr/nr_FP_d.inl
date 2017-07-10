@@ -165,7 +165,7 @@ inline int FP_NR<double>::is_nan() const {
 
 template<>
 inline int FP_NR<double>::is_finite() const {
-  return isfinite(data);
+  return std::isfinite(data);
 }
 
 /* arithmetic */

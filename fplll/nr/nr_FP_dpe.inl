@@ -173,7 +173,7 @@ inline int FP_NR<dpe_t>::is_nan() const {
 
 template<>
 inline int FP_NR<dpe_t>::is_finite() const {
-  return isfinite(DPE_MANT(data));
+  return std::isfinite(DPE_MANT(data));
 }
 
 /* arithmetic */
@@ -283,7 +283,7 @@ inline void FP_NR<dpe_t>::swap(FP_NR<dpe_t>& a) {
 template<>
 inline ostream& operator<<(ostream& os, const FP_NR<dpe_t>& x) {
   double m = DPE_MANT(x.get_data());
-  if (!isfinite(m))
+  if (!std::isfinite(m))
     os << m;
   else {
     double mm = DPE_EXP(x.get_data()) * log10(2.0);
